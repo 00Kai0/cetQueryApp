@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>准考证查询系统</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+{% load static staticfiles %}
+<link rel="stylesheet" href="{% static "css/style.css" %}" />
+<!--
+<script type="text/javascript">
+	function copyUrl2()
+		{
+		var Url2=document.getElementById("biao1");
+		Url2.select(); // 选择对象
+		document.execCommand("Copy"); // 执行浏览器复制命令
+		alert("已复制好，可贴粘。");
+		}
+</script>
+-->
+
+<body>
+
+<div class="login-container">
+	<h1>准考证查询系统</h1>
+	
+	<div class="connect">
+		<p>Link the world. Share to world.</p>
+	</div>
+	
+	<form action="" method="post" id="loginForm">
+    {% csrf_token %}
+		<div>
+			<input type="text" name="username" disabled="disabled" class="username" placeholder="学号：" autocomplete="\
+			off" value="{{ user_number }}"/>
+		</div>
+		
+		<div>
+			<input cols="20" rows="10" id="biao1" disabled="disabled" placeholder="准考证：" value="{{ exam_number }}"/><br>
+		</div>
+		<!--
+		<div id="d1">
+			<button id="submit" type="button" onClick="copyUrl2()" value="点击复制代码">复 制 准 考 证</button>
+		</div>
+	    -->
+		
+	</form>
+
+
+<div>
+	<a href="http://cet.neea.edu.cn/cet/">
+		<button type="button" class="register-tis">四 六 级 查 询 入 口 1</button>
+	</a>
+</div>
+<div>
+
+      <a href="http://www.chsi.com.cn/cet/">
+		<button type="button" class="register-tis">四 六 级 查 询 入 口 2</button>
+	
+	  </a>
+</div>	
+<div>
+       <a href="http://js.cltt.org/Web/Login/PSCP01001.aspx">
+		<button type="button" class="register-tis">普 通 话 考 试 查 询 入 口</button>
+	  </a>
+</div>
+
+<div>
+      <a href="https://yz.chsi.com.cn/apply/cjcx/">
+		<button type="button" class="register-tis">研 究 生 考 试 查 询 入 口</button>
+	   </a>
+</div>
+<script src="{% static "js/jquery.min.js" %}"></script>
+<script src="{% static "js/common.js" %}"></script>
+<!--背景图片自动更换-->
+<script src="{% static "js/supersized.3.2.7.min.js" %}"></script>
+<script src="{% static "js/supersized-init.js" %}"></script>
+<!--表单验证-->
+<script src="{% static "js/jquery.validate.min.js" %}"></script>
+
+</div>
+
+</body>
+</html>

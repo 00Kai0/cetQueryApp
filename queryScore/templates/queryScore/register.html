@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+{% load static from staticfiles %}
+
+<title>准考证绑定页面</title>
+<link rel="stylesheet" href="{% static "css/style.css" %}" />
+
+<body>
+
+<div class="register-container">
+	<h1>准考证绑定系统</h1>
+	
+	<div class="connect">
+		<p>Link the world. Share to world.</p>
+	</div>
+
+	<form action="{% url "queryScore:onRegister" %}" method="post" id="registerForm">
+        {% csrf_token %}
+        {% if errorMessage %}
+            <P>{{errorMessage}}</P>
+        {% endif %}
+		<div>
+			<input type="text" name="username" class="username" placeholder="请输入姓名" autocomplete="off"/>
+		</div>
+
+		<div>
+			<input type="text" maxlength="10" name="password" class="password" placeholder="请输入学号" oncontextmenu="return false" onpaste="return false" />
+		</div>
+		
+		<div>
+	
+		    <select id = "selProvince" name="selProvince" class = "inputDiv" onChange="changeCity( )">
+		        <option value="">请选择</option>
+		      	<option value="cet">英语四六级（含口试）</option>
+		      	<option value="psc">普通话考试</option>
+	            <option value="neep">研究生考试</option>
+        	</select><br>
+		</div>
+
+		<div>
+			<input type="text" maxlength="15" name="phone_number" class="phone_number" placeholder="请输入准考证号" autocomplete="off" id="number"/>
+		</div>
+
+		<div id="d1">
+			<button id="submit" type="submit">绑 定 </button>
+		</div>
+		<!-- 按钮无法跳出弹出框 -->
+      
+	</form>
+   
+   <a href="{% url "queryScore:index" %}">
+		<button type="button" class="register-tis">已 绑 定 ？ 点 此 查 询
+
+		</button>
+	
+	<script type="text/javascript">
+        $(function(){
+            $('#d1').click(function(){
+                alert('你点击了我');
+            })
+        })
+    </script>
+	</a>
+
+</div>
+
+
+<script src="{% static "js/jquery.min.js" %}"></script>
+<!--<script src="{% static "js/common.js" %}"></script>-->
+<!--背景图片自动更换-->
+<script src="{% static "js/supersized.3.2.7.min.js" %}"></script>
+<script src="{% static "js/supersized-init.js" %}"></script>
+<!--表单验证-->
+<script src="{% static "js/jquery.validate.min.js" %}"></script>
+<div class="connect" style="text-align:center;"><span>© 苏 应 印 象 工 作 室</span></div>
+</body>
+</html>

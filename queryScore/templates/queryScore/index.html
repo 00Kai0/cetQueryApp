@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+{% load static from staticfiles %}
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>准考证查询系统</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="stylesheet" href="{% static "css/style.css" %}" />
+
+<body>
+
+<div class="login-container">
+	<h1>准考证查询系统</h1>
+	
+	<div class="connect">
+		<p>Link the world. Share to world.</p>
+	</div>
+
+
+    {% if errorMessage %}
+        <p>{{ errorMessage }}</p>
+    {% endif %}
+	
+	<form action="{% url 'queryScore:onQuery' %}" method="post" id="loginForm">
+        {% csrf_token %}
+		<div>
+			<input type="text" name="username" class="username" maxlength="10"  placeholder="学号：" autocomplete="off"/>
+		</div>
+		<div>
+			<select id = "selProvince" name="selProvince" class = "inputDiv"  id="考试类型" onChange="changeCity( )">  
+		       <option value="">请选择
+		      	</option>
+		      	<option value="cet">英语四六级（含口试）
+		      	</option>
+		      	<option value="psc">普通话考试 PSC</option>
+	            <option value="neep">研究生考试 NEEP</option>
+        	</select><br>
+		</div>
+
+		
+			<button id="submit" type="submit">查 询</button> 
+			<!-- 按钮无法转入showpage -->
+		
+		
+	</form>
+
+	<a href="{% url "queryScore:register" %}">
+		<button type="button" class="register-tis">还 没 有 绑 定 ？</button>
+	</a>
+
+</div>
+
+<script src="{% static "js/jquery.min.js"%}"></script>
+<script src="{% static "js/common.js" %}"></script>
+<!--背景图片自动更换-->
+<script src="{% static "js/supersized.3.2.7.min.js" %}"></script>
+<script src="{% static "js/supersized-init.js" %}"></script>
+<!--表单验证-->
+<script src="{% static "js/jquery.validate.min.js" %}"></script>
+<div class="connect" style="text-align:center;"><span>© 苏 应 印 象 工 作 室</span></div>
+</body>
+</html>
