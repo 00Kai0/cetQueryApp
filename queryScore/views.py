@@ -74,7 +74,7 @@ def onRegister(request):
     if(len(user_number)!=10):
         return render(request, "queryScore/register.html", {"errorMessage":"学号有误，请检查"})
     elif(examtype=='cet' and len(exam_number)!=15):
-        return render(request, "queryScore/register.html", {"errorMessage":"四六级准考证长度为13位，请核准"})
+        return render(request, "queryScore/register.html", {"errorMessage":"四六级准考证长度为15位，请核准"})
     elif(examtype=='psc' and len(exam_number)!=13):
         return render(request, "queryScore/register.html",{"errorMessage":"普通话考试准考证长度为13位，请核准"})
     elif(examtype=='neep' and len(exam_number)!=15):
