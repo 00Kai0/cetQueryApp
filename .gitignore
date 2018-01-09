@@ -99,3 +99,7 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+*.js linguist-language=python；
+*.css linguist-language=python；
+*.html linguist-language=python
